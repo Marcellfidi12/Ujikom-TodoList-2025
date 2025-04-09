@@ -42,7 +42,8 @@ class DashboardController extends Controller
         $sevenDaysLater = $currentDate->copy()->addDays(7);
 
         // Ambil tasks yang mendekati deadline (7 hari atau kurang)
-        $reminders = Task::where('status', false) 
+        $reminders = Task::where('status', false)
+            ->where('user_id', Auth::id()) 
             ->whereBetween('deadline', [$currentDate, $sevenDaysLater])
             ->get();
 

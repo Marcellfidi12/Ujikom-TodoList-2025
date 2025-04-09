@@ -23,7 +23,7 @@
         </div>
         <div class="flex flex-col sm:flex-row sm:justify-between gap-4">
             <a href="{{ route('reminder')}}" class="text-primary-600 dark:text-white font-medium hover:underline">View Reminders</a>
-            <button id="close-modal" type="button" class="py-2 px-4 w-full sm:w-auto text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
+            <button id="close-modal" type="button" class="py-2 px-4 w-full sm:w-auto text-sm font-medium text-gray-500 bg-gray-100 rounded-lg border border-gray-500 hover:bg-gray-500 hover:text-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
         </div>
     </div>
 </div>

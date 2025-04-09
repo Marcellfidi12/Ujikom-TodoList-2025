@@ -36,6 +36,8 @@ class RegisterController extends Controller
         // Login otomatis setelah registrasi
         Auth::login($user);
 
+        session()->flash('success', 'Registrasi berhasil! Selamat datang.');
+
         // Redirect ke halaman dashboard
         return redirect('/dashboard');
     }

@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Todo')</title>
+    <title>@yield('title', 'M CODE (Todo App)')</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://kit.fontawesome.com/fa4f06edc9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         input[type="radio"]:checked {
@@ -34,5 +36,7 @@
     <x-navbar />
     <x-sidebar />
     @yield('content')
+    <x-loadingspinner />
+    <x-toast :message="session('success')" :visible="session()->has('success')" />
 </body>
 </html>

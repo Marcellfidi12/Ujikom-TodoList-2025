@@ -3,7 +3,7 @@
 
   <x-popup :reminders="$reminders" />
 
-  <main id="main-content" class="sm:ml-20 sm:mr-12 mt-24 px-6 transition-all duration-300 ease-in-out">
+  <main id="main-content" class="sm:ml-16 sm:mr-8 mt-24 px-6 transition-all duration-300 ease-in-out">
     <h2 class="text-2xl font-bold mb-4 text-gray-600 dark:text-white">Dashboard</h2>
     <div class="flex flex-col sm:flex-row gap-6">
       <!-- Card Kiri -->
@@ -30,22 +30,24 @@
             <!-- Summary Section -->
             <div id="summary-section" class="content-section">
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                <div class="bg-gray-100 rounded-lg p-4 shadow-md flex flex-col items-center sm:items-start">
-                  <h4 class="text-md font-semibold mb-2 text-center sm:text-left">Tasks Completed</h4>
-                  <p class="text-lg font-bold text-green-600">{{ $completedTasks }}</p>
+                <!-- Tasks Completed -->
+                <div class="border border-green-500 bg-green-100 rounded-lg p-4 shadow-md flex flex-col items-center sm:items-start">
+                  <h4 class="text-md font-semibold mb-2 text-green-700 text-center sm:text-left">Tasks Completed</h4>
+                  <p class="text-lg text-green-700">{{ $completedTasks }}</p>
                 </div>
-        
-                <div class="bg-gray-100 rounded-lg p-4 shadow-md flex flex-col items-center sm:items-start">
-                  <h4 class="text-md font-semibold mb-2 text-center sm:text-left">Tasks Pending</h4>
-                  <p class="text-lg font-bold text-yellow-600">{{ $pendingTasks }}</p>
+                <!-- Tasks Pending -->
+                <div class="border border-yellow-500 bg-yellow-100 rounded-lg p-4 shadow-md flex flex-col items-center sm:items-start">
+                  <h4 class="text-md font-semibold mb-2 text-yellow-700 text-center sm:text-left">Tasks Pending</h4>
+                  <p class="text-lg text-yellow-700">{{ $pendingTasks }}</p>
                 </div>
-        
-                <div class="bg-gray-100 rounded-lg p-4 shadow-md flex flex-col items-center sm:items-start">
-                  <h4 class="text-md font-semibold mb-2 text-center sm:text-left">Overdue Tasks</h4>
-                  <p class="text-lg font-bold text-red-600">{{ $overdueTasks }}</p>
+                <!-- Overdue Tasks -->
+                <div class="border border-red-500 bg-red-100 rounded-lg p-4 shadow-md flex flex-col items-center sm:items-start">
+                  <h4 class="text-md font-semibold mb-2 text-red-700 text-center sm:text-left">Overdue Tasks</h4>
+                  <p class="text-lg text-red-700">{{ $overdueTasks }}</p>
                 </div>
               </div>
             </div>
+
         
             <!-- Time and Date Section -->
             <div id="date-time-section" class="content-section hidden">
@@ -93,7 +95,6 @@
 
       <!-- Card Kanan -->
       <div class="flex-1 bg-white dark:bg-gray-800 border rounded-lg p-6 overflow-hidden">
-        <h2 class="text-2xl font-bold text-center underline text-gray-600 dark:text-gray-200">Tasks <span class="text-sm text-gray-500"></span></h2>
         <!-- Task Filter -->
         <div class="w-full overflow-x-auto whitespace-nowrap">
           <div class="flex space-x-4 mb-4 border-b pb-2 flex-nowrap">
@@ -101,15 +102,20 @@
               <button id="btn-high" class="px-4 py-2 border-b-2 border-transparent hover:border-blue-600 dark:text-white" onclick="filterTasks('high', this)">High</button>
               <button id="btn-medium" class="px-4 py-2 border-b-2 border-transparent hover:border-blue-600 dark:text-white" onclick="filterTasks('medium', this)">Medium</button>
               <button id="btn-normal" class="px-4 py-2 border-b-2 border-transparent hover:border-blue-600 dark:text-white" onclick="filterTasks('normal', this)">Normal</button>
+              <button id="btn-completed" class="px-4 py-2 border-b-2 border-transparent hover:border-green-600 dark:text-white" onclick="filterTasks('completed', this)">Completed</button>
           </div>
         </div>
         
         <!-- Task List -->
         <div class="h-[50vh] pb-4 overflow-y-auto">
+            <div id="empty-message" class="hidden h-full flex flex-col items-center justify-center italic text-gray-500">
+              <i class="fa-solid fa-inbox text-6xl text-gray-300 mb-4"></i>
+              <span class="text-lg font-semibold">Tidak ada tugas terbaru disini</span>
+            </div>
             <ul id="task-list" class="space-y-4">
               @foreach ($tasks as $task)
-              <li class="flex items-center border rounded-2xl p-4 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition duration-300 task-item"
-                  data-priority="{{ $task->priority }}">
+              <li class="flex items-center border rounded-2xl p-4 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition duration-300 task-item {{ $task->status ? 'hidden' : '' }}"
+                  data-priority="{{ $task->priority }}" data-status="{{ $task->status ? 'completed' : 'pending' }}">
                   
                   <span class="ml-3 text-lg font-medium 
                       {{ $task->status ? 'text-gray-400 line-through' : 'text-gray-700 dark:text-gray-200' }}">
@@ -133,12 +139,17 @@
   </main>
 
   <script>
+    //mengecek tugas saat pertama kali memuat halaman
+    window.addEventListener("load", () => {
+        checkEmptyTaskList();
+    });
+    
     const quotes = [
-      "The secret of getting ahead is getting started. – Mark Twain",
-      "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
-      "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
-      "Believe you can and you're halfway there. – Theodore Roosevelt",
-      "The way to get started is to quit talking and begin doing. – Walt Disney"
+      "Rahasia untuk maju adalah dengan memulainya. – Mark Twain",
+      "Jangan memperhatikan jam; melakukan apa yang dilakukannya. Terus berlanjut. – Sam Levenson",
+      "Kesuksesan bukanlah sesuatu yang final, kegagalan bukanlah hal yang fatal: Yang terpenting adalah keberanian untuk melanjutkan. – Winston Churchill",
+      "Percayalah Anda bisa dan Anda sudah setengah jalan menuju kesuksesan. – Theodore Roosevelt",
+      "Cara memulainya adalah dengan berhenti berbicara dan mulai melakukan. – Walt Disney"
     ];
 
     // Pilih kutipan secara acak

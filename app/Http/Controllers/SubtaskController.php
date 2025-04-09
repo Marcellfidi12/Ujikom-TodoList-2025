@@ -37,5 +37,4 @@ class SubtaskController extends Controller
         return response()->json(['message' => 'Subtask deleted successfully.']);
     }
 
-
 }

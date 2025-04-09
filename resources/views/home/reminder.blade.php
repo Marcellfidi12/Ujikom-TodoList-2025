@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
 
-    <main id="main-content" class="sm:ml-20 sm:mr-12 mt-24 px-6 transition-all duration-300 ease-in-out">
+    <main id="main-content" class="sm:ml-16 sm:mr-8 mt-24 px-6 transition-all duration-300 ease-in-out">
         <h2 class="text-2xl font-bold mb-4 text-gray-600 dark:text-white">Dashboard</h2>
         <div class="mx-auto my-8 bg-white border rounded-lg p-6">
             <div class="flex justify-between items-center mb-4">

@@ -48,10 +48,10 @@ class TaskController extends Controller
     // Mengubah status tugas (selesai/belum selesai)
     public function updateStatus(Request $request, Task $task)
     {
-        // Hanya validasi jika ingin menyelesaikan tugas
+        // Hanya validasi jika ingin menyelesaikan tugas(opsional)
         if (!$task->status) {
             $request->validate([
-                'proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+                'proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             ]);
     
             // Menyimpan file hanya jika ada file yang diunggah
@@ -63,7 +63,7 @@ class TaskController extends Controller
         $task->status = !$task->status;
         $task->save();
     
-        // Jika status selesai, simpan history dan proof
+        // Jika status selesai, simpan history dan proof(jika ada)
         if ($task->status) {
             $existingHistory = History::where('task_id', $task->id)->first();
     
@@ -73,7 +73,7 @@ class TaskController extends Controller
                 History::create([
                     'task_id' => $task->id,
                     'end_at' => Carbon::now(),
-                    'proof' => isset($path) ? $path : null,
+                    'proof' => $path ?? null,
                 ]);
             }
         }
@@ -99,7 +99,7 @@ class TaskController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'status' => 'required|boolean',
+            // 'status' => 'required|boolean',
             'priority' => 'required|in:high,medium,normal',
             'deadline' => 'required|date',
         ]);
@@ -107,12 +107,26 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update([
             'name' => $request->name,
-            'status' => $request->status,
+            // 'status' => $request->status,
             'priority' => $request->priority,
             'deadline' => $request->deadline,
         ]);
 
         return redirect()->route('tasks.index')->with('success', 'Tugas berhasil diperbarui!');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+        $userId = Auth::id();
+
+        // Mencari tugas berdasarkan nama
+        $tasks = Task::where('user_id', $userId)
+        ->where('name', 'LIKE', "%{$query}%")
+        ->orderBy('created_at', 'desc')
+        ->get(['id', 'name']);
+
+        return response()->json($tasks);
     }
 
 }

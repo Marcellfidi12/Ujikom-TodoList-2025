@@ -28,6 +28,8 @@ class LoginController extends Controller
             // Jika berhasil login
             $request->session()->regenerate();
 
+            session()->flash('success', 'Login berhasil! Selamat datang kembali.');
+
             return redirect()->intended('/dashboard'); // Redirect ke halaman dashboard
         }
 
@@ -45,6 +47,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

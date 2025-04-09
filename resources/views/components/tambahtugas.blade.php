@@ -1,6 +1,6 @@
-<div id="task-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+<div id="task-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden p-4 sm:p-6">
     <div class="bg-white rounded-lg p-6 w-96">
-      <h3 class="text-lg font-bold mb-4">Tambah Task Baru</h3>
+      <h3 class="text-lg font-bold mb-4">Tambah Tugas Baru</h3>
       <form id="add-task-form" method="POST" action="{{ route('tasks.store') }}">
         @csrf
         <div class="mb-4">
@@ -33,23 +33,26 @@
             name="deadline"
             type="date"
             class="border border-gray-300 rounded-lg w-full p-2 text-sm"
+            min="{{ date('Y-m-d') }}"
             required
           />
         </div>
         <div class="flex justify-end space-x-4">
           <button
-            type="button"
-            onclick="closeTaskModal()"
-            class="bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600"
+              type="button"
+              onclick="closeTaskModal()"
+              class="border border-gray-500 bg-gray-100 text-gray-500 px-4 py-2 rounded-lg shadow hover:bg-gray-500 hover:text-white"
           >
-            Batal
+              Batal
           </button>
+
           <button
-            type="submit"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-500"
+              type="submit"
+              class="border border-blue-500 bg-blue-100 text-blue-500 px-4 py-2 rounded-lg shadow hover:bg-blue-500 hover:text-white"
           >
-            Simpan
+              Simpan
           </button>
+
         </div>
       </form>
     </div>
