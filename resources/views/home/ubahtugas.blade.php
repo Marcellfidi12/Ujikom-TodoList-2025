@@ -17,7 +17,7 @@
                         id="name"
                         name="name"
                         value="{{ $task->name }}"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C]"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C] p-2"
                         {{ $task->status ? 'disabled' : '' }}
                         required
                     />
@@ -29,7 +29,7 @@
                     <select
                         id="status"
                         name="status"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C]"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C] p-2"
                         disabled {{-- {{ $task->status ? 'disabled' : '' }} --}}
                     >
                         <option value="0" {{ !$task->status ? 'selected' : '' }}>Belum Selesai</option>
@@ -43,7 +43,7 @@
                     <select
                         id="priority"
                         name="priority"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C]"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C] p-2"
                         {{ $task->status ? 'disabled' : '' }}
                     >
                         <option value="normal" {{ $task->priority === 'normal' ? 'selected' : '' }}>Normal</option>
@@ -60,7 +60,7 @@
                         id="deadline"
                         name="deadline"
                         value="{{ $task->deadline }}"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C]"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#EB5A3C] focus:border-[#EB5A3C] p-2"
                         min="{{ date('Y-m-d') }}"
                         {{ $task->status ? 'disabled' : '' }}
                         required

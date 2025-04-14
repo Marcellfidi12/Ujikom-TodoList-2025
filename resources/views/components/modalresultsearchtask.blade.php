@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div id="taskModal" class="hidden fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 p-4 sm:p-6">
+<div id="taskModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-gray-900 bg-opacity-50 p-4 sm:p-6">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
         <!-- Header -->
         <div class="flex justify-between items-center">

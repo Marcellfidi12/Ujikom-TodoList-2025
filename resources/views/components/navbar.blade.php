@@ -32,13 +32,17 @@
                         <div class="px-2 py-3 text-sm text-gray-900">
                             <div class="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg">
                                 <!-- Avatar -->
-                                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-orange-500 text-white text-lg font-bold">
+                                <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white text-lg font-bold">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                 </div>
                                 <!-- Nama & Email -->
-                                <div class="flex flex-col">
-                                    <div class="font-bold text-gray-900">{{ auth()->user()->name }}</div>
-                                    <div class="text-gray-500">{{ auth()->user()->email }}</div>
+                                <div class="flex flex-col min-w-0">
+                                    <div class="font-bold text-gray-900 truncate max-w-full">
+                                        {{ auth()->user()->name }}
+                                    </div>
+                                    <div class="text-gray-500 truncate max-w-full">
+                                        {{ auth()->user()->email }}
+                                    </div>
                                 </div>
                             </div>                            
                         </div>
@@ -48,6 +52,7 @@
                             <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Theme Settings</a></li>
                         </ul>
                     </div>
+                    
                 </li>
                 <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">

@@ -34,6 +34,10 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showRese
 
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+Route::get('/logout', function () {
+    abort(404);
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/reminder', [DashboardController::class, 'reminder'])->name('reminder');

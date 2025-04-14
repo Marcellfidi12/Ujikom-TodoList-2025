@@ -2,7 +2,7 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('assets/image/logo.png') }}" class="h-8" alt="To-Do Logo">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">M-Todo</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">M-TODO</span>
         </a>
         
         <button id="menu-toggle" class="md:hidden text-gray-900 dark:text-white focus:outline-none">

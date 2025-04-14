@@ -29,7 +29,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto">
             <a href="#" class="flex items-center ps-2.5 mb-5">
                 <img src="{{ asset('assets/image/logo.png') }}" class="h-6 me-3 sm:h-7" alt="M-CODE (Todo App) Logo" />
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">M-Todo</span>
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">M-TODO</span>
             </a>
             <div class="border-t mb-4"></div>
             <ul class="space-y-2 font-medium">

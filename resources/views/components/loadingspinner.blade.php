@@ -1,4 +1,4 @@
-<div id="loading-spinner" class="hidden fixed inset-0 flex flex-col items-center justify-center bg-gray-900 bg-opacity-80 backdrop-blur-md z-50">
+<div id="loading-spinner" class="hidden fixed inset-0 flex flex-col items-center justify-center bg-gray-900 bg-opacity-80 backdrop-blur-md z-[9999]">
     <!-- Spinner dengan Icon Papan Tugas -->
     <div class="relative w-16 h-16 mb-4">
         <div class="absolute inset-0 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
@@ -14,11 +14,6 @@
     <p class="text-white text-xl font-semibold">
         <span id="typing-text"></span> <span class="animate-blink">|</span>
     </p>
-
-    {{-- <!-- Footer di bagian paling bawah -->
-    <div class="absolute bottom-4 w-full text-center">
-        <p class="text-white text-sm">©Marcell Fia Dinata - Ujikom 2025 Paket 2</p>
-    </div> --}}
 </div>
 
 <script>
