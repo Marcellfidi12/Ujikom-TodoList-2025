@@ -33,12 +33,10 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Login otomatis setelah registrasi
-        Auth::login($user);
+        // Flash message setelah registrasi
+        session()->flash('success', 'Registrasi berhasil! Silakan login untuk melanjutkan.');
 
-        session()->flash('success', 'Registrasi berhasil! Selamat datang.');
-
-        // Redirect ke halaman dashboard
-        return redirect('/dashboard');
+        // Redirect ke halaman login
+        return redirect('/login');
     }
 }

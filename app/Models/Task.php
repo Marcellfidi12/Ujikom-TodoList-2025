@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
-
+    // protected $fillable = ['user_id', 'name', 'description', 'status', 'priority', 'deadline'];
+    // //                          ↑ tambahkan 'description' di sini
     protected $fillable = ['user_id','name', 'status', 'priority', 'deadline'];
 
     // Relasi one-to-many dengan History

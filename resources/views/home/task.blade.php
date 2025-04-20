@@ -27,7 +27,7 @@
             </div>
             
             <!-- Task List -->
-            <div class="h-[80vh] pb-4 overflow-y-auto">
+            <div class="h-[60vh] pb-4 overflow-y-auto">
                     <div id="empty-message" class="hidden h-full flex flex-col items-center justify-center italic text-gray-500">
                         <i class="fa-solid fa-inbox text-6xl text-gray-300 mb-4"></i>
                         <span class="text-lg font-semibold">Tidak ada tugas terbaru disini</span>
@@ -59,13 +59,13 @@
         </div>
     
       <!-- Card Kanan -->
-      <div id="task-detail" class="flex-1 bg-white dark:bg-gray-800 border rounded-lg p-6 overflow-hidden">
-        <div id="no-task-selected" class="text-gray-500 italic flex flex-col items-center justify-center h-full">
+      <div id="task-detail" class="flex-1 bg-white dark:bg-gray-800 border rounded-lg overflow-hidden">
+        <div id="no-task-selected" class="text-gray-500 p-6 italic flex flex-col items-center justify-center h-full">
             <i class="fa-solid fa-clipboard-list text-6xl text-gray-300 mb-4"></i>
             <p class="text-lg font-semibold text-gray-500">Tidak ada tugas yang dipilih.</p>
         </div>
         <div id="task-detail-content" class="hidden">
-            
+            <div class="max-h-[67vh] px-6 pt-6 overflow-y-auto">
             <div class="mb-2">
                 <div class="flex items-center justify-between">
                     <h2 id="task-name" class="text-2xl font-bold text-gray-900"></h2>
@@ -95,43 +95,42 @@
         
             <!-- Subtasks List -->
             <h4 class="text-lg font-medium mb-2">Subtasks</h4>
-            <div class="mb-2 p-2 h-[20vh] overflow-y-auto border border-gray-300 rounded-md bg-gray-100">
-                <ul id="subtasks-list" class="space-y-4">
+            <!-- Form Tambah Subtask -->
+            <form onsubmit="addSubtask(event)" class="my-2">
+                <div class="bg-white shadow-md rounded-2xl p-3 flex items-center border border-gray-300">
+                    <input 
+                        type="text" 
+                        id="new-subtask-name" 
+                        class="border-none flex-grow focus:outline-none" 
+                        placeholder="Tambah subtugas..."
+                        required
+                    />
+                    <button 
+                        type="submit" 
+                        class="border border-blue-500 bg-blue-100 rounded-lg shadow-md hover:text-white text-blue-500 px-4 py-2 ml-2 hover:bg-blue-500 flex items-center"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </form>
+            
+                <ul id="subtasks-list" class="space-y-4 my-4">
                     <!-- Subtasks will be loaded here -->
                 </ul>
-            </div>
-
-                <!-- Form Tambah Subtask -->
-                <form onsubmit="addSubtask(event)" class="my-4">
-                    <div class="bg-white shadow-md rounded-2xl p-3 flex items-center border border-gray-300">
-                        <input 
-                            type="text" 
-                            id="new-subtask-name" 
-                            class="border-none flex-grow focus:outline-none" 
-                            placeholder="Tambah subtugas..."
-                            required
-                        />
-                        <button 
-                            type="submit" 
-                            class="border border-blue-500 bg-blue-100 rounded-lg shadow-md hover:text-white text-blue-500 px-4 py-2 ml-2 hover:bg-blue-500 flex items-center"
-                        >
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    </div>
-                </form>
         
                 <form id="complete-task-form" method="POST" action="{{ route('tasks.updateStatus', $task->id ?? '#') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <label for="proof-upload" class="text-sm font-medium block mb-2">Attachments (Optional):</label>
                     <input type="file" id="proof-upload" name="proof" accept="image/*,application/pdf" class="border border-gray-300 rounded-lg p-2 w-full text-sm mb-2"/>
-            <div class="flex space-x-4">
+                </div>
+                    <div class="flex space-x-4 px-6 py-4">
                     <button type="submit" class="border border-green-500 bg-green-100 rounded-lg shadow-md hover:text-white text-green-500 px-4 py-2 hover:bg-green-600 disabled:opacity-50" id="complete-task-btn">
-                        <i class="fa-solid fa-check"></i>
+                        <i class="fa-solid fa-check"></i><span class="hidden sm:inline ml-1">Selesai</span>
                     </button>
                 </form>
                 <a id="edit-task-link" href="#" class="border border-yellow-500 bg-yellow-100 rounded-lg shadow-md hover:text-white text-yellow-500 px-4 py-2 hover:bg-yellow-600">
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-pen-to-square"></i><span class="hidden sm:inline ml-1">Edit</span>
                 </a>
                 <form id="delete-task-form" method="POST" class="inline">
                     @csrf
@@ -141,7 +140,7 @@
                         id="delete-task-button"
                         class="border border-red-500 bg-red-100 rounded-lg shadow-md hover:text-white text-red-500 px-4 py-2 hover:bg-red-600"
                     >
-                        <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash"></i><span class="hidden sm:inline ml-1">Hapus</span>
                     </button>
                 </form>                
             </div>
@@ -161,6 +160,26 @@
     // document.getElementById('proof-upload').addEventListener('change', function() {
     //     document.getElementById('complete-task-btn').disabled = !this.files.length;
     // });
+
+    document.getElementById('complete-task-form').addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        Swal.fire({
+            title: "Tandai sebagai selesai?",
+            text: "Tugas ini akan dianggap selesai dan tidak bisa dikembalikan.",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#16a34a",
+            cancelButtonColor: "#6b7280",
+            confirmButtonText: "Ya, Selesaikan",
+            cancelButtonText: "Batal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                e.target.submit();
+            }
+        });
+    });
+
 
     document.getElementById('delete-task-button').addEventListener('click', function () {
         const taskStatusElement = document.getElementById('task-status');

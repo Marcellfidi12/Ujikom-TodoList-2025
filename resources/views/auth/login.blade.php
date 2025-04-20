@@ -56,6 +56,7 @@
             </a>
         </div>
     </div>
+    <x-toast :message="session('success')" :visible="session()->has('success')" />
     <x-loadingspinner />
     <x-forgotpasswordmodals />
 </body>

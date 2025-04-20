@@ -48,6 +48,25 @@
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
                 </div>
+                <!-- Tambahkan setelah input email / sebelum input password -->
+                {{-- <div>
+                    <label class="block text-sm text-gray-700 mb-1">Jenis Kelamin</label>
+                    <div class="flex items-center space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'checked' : '' }} required
+                                class="text-blue-600 focus:ring-blue-500">
+                            <span class="ml-2 text-gray-700">Laki-laki</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="gender" value="Perempuan" {{ old('gender') == 'Perempuan' ? 'checked' : '' }} required
+                                class="text-blue-600 focus:ring-blue-500">
+                            <span class="ml-2 text-gray-700">Perempuan</span>
+                        </label>
+                    </div>
+                    @error('gender')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
+                    @enderror
+                </div> --}}
                 <div class="flex items-center">
                     <input type="checkbox" id="terms" name="terms" required class="mr-2">
                     <label for="terms" class="text-sm text-gray-700">Saya menyetujui <a href="#" class="text-blue-600 hover:underline" onclick="openModal()">syarat dan ketentuan</a></label>
@@ -70,6 +89,7 @@
             </a>
         </div>
     </div>
+    <x-toast :message="session('success')" :visible="session()->has('success')" />
     <x-loadingspinner />
     <x-modalsyaratdanketentuan />
 </body>

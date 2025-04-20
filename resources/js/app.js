@@ -11,6 +11,7 @@ import './bootstrap';
             document.getElementById('task-status').textContent = data.status ? 'Completed' : 'Incomplete';
             document.getElementById('task-start').textContent = data.created_at.split('T')[0];
             document.getElementById('task-deadline').textContent = data.deadline;
+            // document.getElementById('task-priority').textContent = data.priority;
             document.getElementById('task-detail-content').dataset.taskId = taskId;
 
             // Menghitung sisa hari
@@ -262,7 +263,7 @@ import './bootstrap';
             `<path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>`
             : `<path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 13a1.5 1.5 0 1 1 1.5-1.5A1.5 1.5 0 0 1 10 13Zm-1-8h2v5h-2V5Z"/>`;
 
-        toast.className = "fixed bottom-12 sm:bottom-4 right-4 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800";
+        toast.className = "fixed bottom-12 sm:bottom-4 right-4 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg border border-gray-300 shadow-sm dark:text-gray-400 dark:border-gray-700 dark:bg-gray-800";
         toast.innerHTML = `
             <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 ${iconColor} rounded-lg">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

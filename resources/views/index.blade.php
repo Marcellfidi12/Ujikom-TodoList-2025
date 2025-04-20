@@ -30,7 +30,7 @@
                     Permudah hidupmu dengan aplikasi to-do list kami. Atur tugas, tetapkan prioritas, dan tetap produktif dengan sinkronisasi waktu nyata dan pengingat cerdas.
                 </p>
                 <div class="flex flex-col md:flex-row mt-6 space-y-4 md:space-y-0 md:space-x-4">
-                    <a href="{{ route('login') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-white rounded-lg bg-blue-600 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300">
+                    <a href="{{ route('register') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-white rounded-lg bg-blue-600 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300">
                         Get started
                         <svg class="w-4 h-4 ml-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="lg:w-1/2 mt-10 lg:mt-0 flex justify-center lg:justify-end" data-aos="fade-up">
-                <img src="{{ asset('assets/image/bg3.png') }}" alt="To-Do List Illustration" class="w-full max-w-md md:max-w-lg lg:max-w-xl object-cover mask-gradient">
+                <img src="{{ asset('assets/image/bg4.png') }}" alt="To-Do List Illustration" class="w-full max-w-md md:max-w-lg lg:max-w-xl object-cover mask-gradient">
             </div>
         </section>
 

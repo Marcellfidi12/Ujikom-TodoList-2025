@@ -21,7 +21,24 @@
             
             <div class="max-w-3xl mx-auto space-y-8">
                 <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-gray-800">Version 1.6.0 - 2024-02-12</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.8.0 - 2025-04-20</h3>
+                    <ul class="list-disc list-inside text-gray-500 mt-2">
+                        <li>Pengecekan dan Finalisasi Aplikasi.</li>
+                        <li>Penambahan Alert Pada Tombol Selesai (Tugas).</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.7.0 - 2025-03-25</h3>
+                    <ul class="list-disc list-inside text-gray-500 mt-2">
+                        <li>Perbaikan Interface Halaman Dashboard.</li>
+                        <li>Penambahan Fitur Export to Pdf (History).</li>
+                        <li>Penambahan Halaman 404 Not Found</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.6.0 - 2025-02-12</h3>
                     <ul class="list-disc list-inside text-gray-500 mt-2">
                         <li>Penambahan fitur pencarian task.</li>
                         <li>Pengubahan fitur ganti password.</li>
@@ -29,7 +46,7 @@
                 </div>
 
                 <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-gray-800">Version 1.5.0 - 2024-02-06</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.5.0 - 2025-02-06</h3>
                     <ul class="list-disc list-inside text-gray-500 mt-2">
                         <li>Penambahan halaman riwayat tugas.</li>
                         <li>Pengubahan atribut prioritas ada tugas.</li>
@@ -38,7 +55,7 @@
                 </div>
 
                 <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-gray-800">Version 1.4.0 - 2024-02-04</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.4.0 - 2025-02-04</h3>
                     <ul class="list-disc list-inside text-gray-500 mt-2">
                         <li>Penambahan fitur subtask.</li>
                         <li>Penyesuaian filter task di halaman dashboard.</li>
@@ -47,7 +64,7 @@
                 </div>
 
                 <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-gray-800">Version 1.3.0 - 2024-01-30</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.3.0 - 2025-01-30</h3>
                     <ul class="list-disc list-inside text-gray-500 mt-2">
                         <li>Penyesuaian responsive tampilan.</li>
                         <li>Penambahan halaman dashboard.</li>
@@ -56,7 +73,7 @@
                 </div>
 
                 <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-gray-800">Version 1.2.0 - 2024-01-28</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.2.0 - 2025-01-28</h3>
                     <ul class="list-disc list-inside text-gray-500 mt-2">
                         <li>Peningkatan sistem pengingat otomatis.</li>
                         <li>Perbaikan bug pada tampilan UI.</li>
@@ -64,7 +81,7 @@
                 </div>
                 
                 <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-gray-800">Version 1.1.0 - 2024-01-27</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">Version 1.1.0 - 2025-01-27</h3>
                     <ul class="list-disc list-inside text-gray-500 mt-2">
                         <li>Menambahkan fitur pelacakan progres.</li>
                         <li>Optimasi performa aplikasi.</li>

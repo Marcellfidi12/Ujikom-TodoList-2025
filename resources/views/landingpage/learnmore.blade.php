@@ -45,7 +45,7 @@
             </div>
 
             <div class="lg:w-1/2 mt-10 lg:mt-0 flex justify-center lg:justify-end" data-aos="fade-up">
-                <img src="{{ asset('assets/image/bg3.png') }}" alt="To-Do List Illustration" class="w-full max-w-md md:max-w-lg lg:max-w-xl object-cover mask-gradient">
+                <img src="{{ asset('assets/image/bg4.png') }}" alt="To-Do List Illustration" class="w-full max-w-md md:max-w-lg lg:max-w-xl object-cover mask-gradient">
             </div>
         </section>
 

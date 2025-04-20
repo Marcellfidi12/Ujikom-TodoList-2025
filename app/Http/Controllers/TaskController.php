@@ -30,6 +30,7 @@ class TaskController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            // 'description' => 'required|string',
             'priority' => 'required|in:high,medium,normal',
             'deadline' => 'required|date',
         ]);
@@ -37,6 +38,7 @@ class TaskController extends Controller
         Task::create([
             'user_id' => Auth::id(),
             'name' => $request->name,
+            // 'description' => $request->description,
             'priority' => $request->priority,
             'deadline' => $request->deadline,
             'status' => false,
@@ -50,13 +52,21 @@ class TaskController extends Controller
     {
         // Hanya validasi jika ingin menyelesaikan tugas(opsional)
         if (!$task->status) {
-            $request->validate([
-                'proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            ]);
-    
-            // Menyimpan file hanya jika ada file yang diunggah
+            // Validasi file proof jika ada
             if ($request->hasFile('proof')) {
-                $path = $request->file('proof')->store('proofs', 'public'); // Simpan di storage
+                $extension = $request->file('proof')->getClientOriginalExtension();
+                $allowed = ['jpg', 'jpeg', 'png'];
+
+                if (!in_array(strtolower($extension), $allowed)) {
+                    return redirect()->back()->with('success', 'Format file tidak valid. Hanya JPG, JPEG, atau PNG.');
+                }
+
+                if ($request->file('proof')->getSize() > 2048 * 1024) {
+                    return redirect()->back()->with('error', 'Ukuran file maksimal 2MB.');
+                }
+
+                // Simpan file jika lolos validasi manual
+                $path = $request->file('proof')->store('proofs', 'public');
             }
         }
     
@@ -77,7 +87,7 @@ class TaskController extends Controller
                 ]);
             }
         }
-    
+     
         return redirect()->back()->with('success', 'Status tugas diperbarui!');
     }
     
